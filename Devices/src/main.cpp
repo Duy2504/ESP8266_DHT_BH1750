@@ -16,7 +16,6 @@ void setup()
   dht.begin();
   Wire.begin();
 
-
   if (lightMeter.begin(BH1750::CONTINUOUS_HIGH_RES_MODE))
   {
     Serial.println(F("BH1750 Advanced begin"));
@@ -29,14 +28,14 @@ void setup()
 
 void loop()
 {
-  float h = dht.readHumidity();
+  int h = dht.readHumidity();
   Serial.println(h);
-  float t = dht.readTemperature();
+  int t = dht.readTemperature();
   Serial.println(t);
   delay(1000);
   if (lightMeter.measurementReady())
   {
-    float lux = lightMeter.readLightLevel();
+    int lux = lightMeter.readLightLevel();
     Serial.print("Light: ");
     Serial.print(lux);
     Serial.println(" lx");
